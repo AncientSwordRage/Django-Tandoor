@@ -1,0 +1,27 @@
+{% load staticfiles %}
+<!doctype HTML>
+<html>
+	<head>
+	<!-- external includes -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+	<!-- local includes -->
+		<link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.png' %}"/>
+		<link rel="stylesheet" href="{% static 'css/site.css' %}">
+		<title>Malmesbury Tandoori</title>
+	</head>
+	<body>
+		{% include 'navbar.html' %}
+		</div>
+		<div class="content container">
+			<div class="row">
+				<div class="col-md-8">
+					{% block content %}
+					{% endblock %}
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

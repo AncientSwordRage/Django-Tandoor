@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load tandoor_tags%}
+{% block content %}
+    <h2>Menu</h2>
+<table>
+	{% for category in foodcategory_list %}
+    <tbody>
+    	<tr>
+    		<th>Name</th>
+    		<th>Price</th>
+    		<th>Spice Rating</th>
+    	</tr>
+    	{% for menu_item in category.items.all %}
+		<tr>
+			<td class="menu-item-name">{{menu_item.name}}</td>
+			<td class="menu-item-price">{{menu_item.price}}</td>
+			<td class="menu-item-spicerating">{{menu_item.spice_rating|multiglyph:"fire"|safe}}</td>
+		</tr>
+		<tr>
+			<td>{{menu_item.description}}</td>
+		</tr>
+		{%empty%}
+		<tr><td>No items in this category!</td></tr>
+    	{% endfor %}
+    </tbody>
+    {% endfor %}
+</table>
+{% endblock %}
