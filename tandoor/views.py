@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import DetailView, ListView
+from django.views.generic import DetailView, ListView, TemplateView
 from .models import FoodCategory, FoodItem
 
 
@@ -12,3 +12,6 @@ class FoodCategoryListView(ListView):
 
 class FoodCategoryDetailView(DetailView):
     model = FoodCategory
+
+class HomeView(TemplateView):
+    template_name = "TakeawayHomePage.html"

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{%block content%}
+<main class="col-md-12">
+	<section class = "text-center telephone">
+		01666 822984
+	</section>
+	<section class = "col-md-4 col-s-12">Malmesbury tandoori is a traditional indian takeaway established over 30 years ago in the historic town of Malmesbury in Wiltshite.</section>
+	<img src="{% static 'img/Taj_Mahal.svg' %}" id="main-page-mahal" class="svg col-md-4 col-s-12">
+	<section class="col-md-4 col-s-12">
+		<div class="address">
+			<p>49 High Street, Malmesbury, SN16 9AG</p>
+		</div>
+		<div class="opening">
+			<p class="opening-days">Open 7 days a week</p>
+			<p class="opening-days-bank sub">including all bank holidays</p>
+			<p class="opening-times">5.00pm till 11.00pm</p>
+		</div>
+	</section>
+	<section class="col-md-12">
+		<small class = "text-center">Visa and Credit Cards accepted</small>
+	</section>
+</main>
+{%endblock%}

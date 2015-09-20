@@ -1,0 +1,17 @@
+{%extends "base.html"%}
+{%block sidebar%}
+<div id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+        <li class="sidebar-brand">
+            <a href="#">
+               Malmesbury Tandoori
+            </a>
+        </li>
+        {%for section in page%}
+        <li>
+            <a href="#{{section.name}}">{{section.name}}</a>
+        </li>
+        {%endfor$}
+    </ul>
+</div>
+{%endblock%}

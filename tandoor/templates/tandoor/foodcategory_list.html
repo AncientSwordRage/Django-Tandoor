@@ -1,28 +1,48 @@
 {% extends "base.html" %}
 {% load tandoor_tags%}
-{% block content %}
-    <h2>Menu</h2>
-<table>
-	{% for category in foodcategory_list %}
-    <tbody>
-    	<tr>
-    		<th>Name</th>
-    		<th>Price</th>
-    		<th>Spice Rating</th>
-    	</tr>
-    	{% for menu_item in category.items.all %}
-		<tr>
-			<td class="menu-item-name">{{menu_item.name}}</td>
-			<td class="menu-item-price">{{menu_item.price}}</td>
-			<td class="menu-item-spicerating">{{menu_item.spice_rating|multiglyph:"fire"|safe}}</td>
-		</tr>
-		<tr>
-			<td>{{menu_item.description}}</td>
-		</tr>
-		{%empty%}
-		<tr><td>No items in this category!</td></tr>
-    	{% endfor %}
-    </tbody>
-    {% endfor %}
-</table>
+{%block content%}
+<div class="content-wrapper">
+	<div class="sidebar-wrapper col-md-2 col-xs-12">
+	    <ul class="sidebar-nav">
+	        <li class="sidebar-brand sidebar-item">
+	            <a href="#">
+	               Malmesbury Tandoori
+	            </a>
+	        </li>
+	        {%for section in foodcategory_list%}
+	        <li class = "sidebar-item">
+	            <a href="#{{section.name}}">{{section.name}}</a>
+	        </li>
+	        {%endfor%}
+	    </ul>
+	</div>
+	<div class = "menu-wrapper col-md-10 col-xs-12">
+		<h2>Menu</h2>
+		<table>
+			{% for category in foodcategory_list %}
+		    <tbody>
+		    	<tr name="{{category.name}}" class="category">
+		    		<th colspan="2">{{category.name}}</th>
+		    	</tr>
+		    	<tr>
+		    		<th>Name</th>
+		    		<th>Price</th>
+		    	</tr>
+		    	{% for menu_item in category.items.all %}
+				<tr class="menu-item-row" title="{{menu_item.tags.names|join:", "}}">
+					<td class="menu-item menu-item-name">{{menu_item.name}} {%multiglyph icon_name="fire" factor=menu_item.spice_rating %}</td>
+					<td class="menu-item menu-item-price">£{{menu_item.price}}</td>
+				</tr>
+				<tr>
+					<td class="menu-item-description">{{menu_item.description}}</td>
+					<td></td>
+				</tr>
+				{%empty%}
+				<tr><td>No items in this category!</td></tr>
+		    	{% endfor %}
+		    </tbody>
+		    {% endfor %}
+		</table>
+		</div>
+</div>
 {% endblock %}
