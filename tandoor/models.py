@@ -1,5 +1,5 @@
 from django.db import models
-from django_tandoor.custom_fields import CurrencyField
+from malmesbury_tandoori.custom_fields import CurrencyField
 from taggit.managers import TaggableManager
 
 

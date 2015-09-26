@@ -4,7 +4,7 @@ from tandoor.views import FoodCategoryListView, HomeView, AboutView
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'django_tandoor.views.home', name='home'),
+    # url(r'^$', 'malmesbury_tandoori.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),

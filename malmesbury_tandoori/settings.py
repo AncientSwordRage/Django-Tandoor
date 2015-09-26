@@ -1,5 +1,5 @@
 """
-Django settings for django_tandoor project.
+Django settings for malmesbury_tandoori project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.7/topics/settings/
@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-STATICFILES_DIRS = (os.path.join(BASE_DIR,'tandoor','static','django_tandoor'),)
+STATICFILES_DIRS = (os.path.join(BASE_DIR,'tandoor','static','malmesbury_tandoori'),)
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
@@ -50,9 +50,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'django_tandoor.urls'
+ROOT_URLCONF = 'malmesbury_tandoori.urls'
 
-WSGI_APPLICATION = 'django_tandoor.wsgi.application'
+WSGI_APPLICATION = 'malmesbury_tandoori.wsgi.application'
 
 
 # Database
