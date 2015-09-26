@@ -26,7 +26,20 @@ class FoodCategory(models.Model):
         verbose_name_plural = "FoodCategories"
 
     name = models.CharField(max_length=128)
-
+    description = models.TextField(blank=True,default=None,null=True)
+    spice_description = models.CharField(max_length=64,choices=(
+            ('mild','Mild'),
+            ('medium','Medium'),
+            ('hot','Hot'),
+            ('very_hot','Fairly Hot'),
+            ('none',None)
+        ), default='none',null=True)
+    categoryType =  models.CharField(max_length=128, choices=(
+            ('starter','Starters'),
+            ('special','Specials'),
+            ('main','Mains'),
+            ('sides','Sides and Extras')
+        ))
     def __str__(self):
         return self.name
    
