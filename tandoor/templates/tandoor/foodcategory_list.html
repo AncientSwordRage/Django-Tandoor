@@ -18,6 +18,9 @@
 	</div>
 	<div class = "menu-wrapper col-md-10 col-xs-12">
 		<h2>Menu</h2>
+		<p>Our menu is carefully designed with different gradded strengths such as mild, medium, hot and fairly hot.</p>
+		<p>Should you find any of our currys to be too hot or too mild please ask for the exact strength you require.</p>
+		<h4>All Main Curry Dishes served in Large Containers</h4>
 		<table>
 			{% for category in foodcategory_list %}
 		    <tbody>
@@ -29,8 +32,8 @@
 		    		<th>Price</th>
 		    	</tr>
 		    	{% for menu_item in category.items.all %}
-				<tr class="menu-item-row" title="{{menu_item.tags.names|join:", "}}">
-					<td class="menu-item menu-item-name">{{menu_item.name}} {%multiglyph icon_name="fire" factor=menu_item.spice_rating %}</td>
+				<tr class="menu-item-row" >
+					<td class="menu-item menu-item-name">{{menu_item.name}} </td>
 					<td class="menu-item menu-item-price">£{{menu_item.price}}</td>
 				</tr>
 				<tr>
