@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load tandoor_tags%}
+{%block content%}
+<main>
+	<div class="sidebar-wrapper col-md-2 col-xs-12">
+	    <ul class="sidebar-nav">
+	        <li class="sidebar-brand sidebar-item">
+	            <a href="#">Malmesbury Tandoori</a>
+	        </li>
+	        {%for section in sections%}
+	        <li class = "sidebar-item">
+	            <a href="#{{section.name}}">{{section.name}}</a>
+	        </li>
+	        {%endfor%}
+	    </ul>
+	</div>
+	<div class="col-md-10">
+		<section class = "about" name="about">
+			<h2>About</h2>
+			<p>
+				Malmesbury Tandoori is a traditional indian takeaway established over 30 years ago in the historic town of Malmesbury in Wiltshite.
+			</p>
+			<p>
+				Malmesbury Tandoori was established over 30 years ago.
+			</p>
+		</section>
+		<section class="reviews" name="reviews">
+			<h2>Reviews</h2>
+			<p>Please visit our <a href="https://plus.google.com/u/0/b/103740244590524377473/103740244590524377473/about/p/pub?review=1">Google Plus</a> to leave a review</p>
+		</section>
+	</div>
+</main>
+{% endblock %}

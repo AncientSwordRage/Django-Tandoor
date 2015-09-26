@@ -15,3 +15,11 @@ class FoodCategoryDetailView(DetailView):
 
 class HomeView(TemplateView):
     template_name = "TakeawayHomePage.html"
+
+class AboutView(TemplateView):
+    template_name = "TakeawayAboutPage.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(AboutView, self).get_context_data(**kwargs)
+        context['sections'] = [{'name':'About'},{'name':'Reviews'}]
+        return context
