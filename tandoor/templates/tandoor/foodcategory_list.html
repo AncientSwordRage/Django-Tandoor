@@ -43,7 +43,10 @@
                     {% for category in foodcategory_list|in_category:catTypeName %}<!-- filter on cat type -->
                     <tbody>
                         <tr name="{{category.name|slugify}}" class="category">
-                            <th colspan="2">{{category.name}}</th>
+                            <th colspan="2">{{category.name}} {{category.get_spice_description}}</th>
+                        </tr>
+                        <tr>
+                            <th colspan="2">{{category.description}}</th>
                         </tr>
                         <tr>
                             <th>Name</th>
