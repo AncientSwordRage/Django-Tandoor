@@ -2,57 +2,71 @@
 {% load tandoor_tags%}
 {%block content%}
 <div class="content-wrapper">
-	<div class="sidebar-wrapper col-md-2 col-xs-12">
-	    <ul class="sidebar-nav">
-	        <li class="sidebar-brand sidebar-item">
-	            <a href="#">
-	               Malmesbury Tandoori
-	            </a>
-	        </li>
-	        {%for section in foodcategory_list%}
-	        <li class = "sidebar-item">
-	            <a href="#{{section.name}}">{{section.name}}</a>
-	        </li>
-	        {%endfor%}
-	    </ul>
-	</div>
-	<div class = "menu-wrapper col-md-10 col-xs-12">
-		<h2>Menu</h2>
-		<p>Our menu is carefully designed with different gradded strengths such as mild, medium, hot and fairly hot.</p>
-		<p>Should you find any of our currys to be too hot or too mild please ask for the exact strength you require.</p>
-		<h4>All Main Curry Dishes served in Large Containers</h4>
-		<ul class="menu-nav nav nav-tabs">
-			{% for value,text in category_type_choices %}
-			<li role="{{value}}" {% ifequal value main %}class="active"{% endifequal %}>
-				<a href="#{{value}}" role="tab" data-toggle="tab">{{text}}</a>
-			</li>
-			{%endfor%}
-		</ul>
-		<table>
-			{% for category in foodcategory_list %}
-		    <tbody>
-		    	<tr name="{{category.name}}" class="category">
-		    		<th colspan="2">{{category.name}}</th>
-		    	</tr>
-		    	<tr>
-		    		<th>Name</th>
-		    		<th>Price</th>
-		    	</tr>
-		    	{% for menu_item in category.items.all %}
-				<tr class="menu-item-row" >
-					<td class="menu-item menu-item-name">{{menu_item.name}} </td>
-					<td class="menu-item menu-item-price">£{{menu_item.price}}</td>
-				</tr>
-				<tr>
-					<td class="menu-item-description">{{menu_item.description}}</td>
-					<td></td>
-				</tr>
-				{%empty%}
-				<tr><td>No items in this category!</td></tr>
-		    	{% endfor %}
-		    </tbody>
-		    {% endfor %}
-		</table>
-	</div>
+    <div class="sidebar-wrapper col-md-2 col-xs-12">
+        <div class="tab-content">
+            {% for catTypeName,catTypeDesc in category_type_choices %}
+            <div role="tabpanel" class="tab-pane {% if forloop.first%} active{%endif%}" id="{{catTypeName}}_nav">
+                <ul class="sidebar-nav">
+                    <li class="sidebar-brand sidebar-item">
+                        <a href="#">
+                           Malmesbury Tandoori
+                        </a>
+                    </li>
+                    <span class="category-type-header">{{catTypeDesc}}</span>
+                    {% for section in foodcategory_list|in_category:catTypeName %}
+                    <li class = "sidebar-item {{catTypeName}}">
+                        <a href="#{{section.name}}">{{section.name}}</a>
+                    </li>
+                    {%endfor%}
+                </ul>
+            </div>
+            {%endfor%}
+        </div>
+    </div>
+    <div class = "menu-wrapper col-md-10 col-xs-12">
+        <h2>Menu</h2>
+        <p>Our menu is carefully designed with different gradded strengths such as mild, medium, hot and fairly hot.</p>
+        <p>Should you find any of our currys to be too hot or too mild please ask for the exact strength you require.</p>
+        <h4>All Main Curry Dishes served in Large Containers</h4>
+        <ul class="menu-nav nav nav-tabs">
+            {% for catTypeName,catTypeDesc in category_type_choices %}
+            <li role="{{catTypeName}}" class="nav-item{% if forloop.first%} active{%endif%}">
+                <a href="#{{catTypeName}}" role="tab" class="detail-text" data-target="#{{catTypeName}}_nav, #{{catTypeName}}" data-toggle="tab">{{catTypeDesc}}</a>
+            </li>
+            {%endfor%}
+        </ul>
+        <div class="tab-content">
+            {% for catTypeName,catTypeDesc in category_type_choices %}
+            <div role="tabpanel" class="tab-pane {% if forloop.first%} active{%endif%}" id="{{catTypeName}}">
+                <h3>{{catTypeDesc}}</h3>
+                <table>
+                    {% for category in foodcategory_list|in_category:catTypeName %}<!-- filter on cat type -->
+                    <tbody>
+                        <tr name="{{category.name}}" class="category">
+                            <th colspan="2">{{category.name}}</th>
+                        </tr>
+                        <tr>
+                            <th>Name</th>
+                            <th>Price</th>
+                        </tr>
+                        {% for menu_item in category.items.all %}<!-- category here should be filtered -->
+                        <tr class="menu-item-row" >
+                            <td class="menu-item menu-item-name">{{menu_item.name}} </td>
+                            <td class="menu-item menu-item-price">£{{menu_item.price}}</td>
+                        </tr>
+                        <tr>
+                            <td class="menu-item-description">{{menu_item.description}}</td>
+                            <td></td>
+                        </tr>
+                        {%empty%}
+                        <tr><td>No items in this category!</td></tr>
+                        {% endfor %}
+                    </tbody>
+                    {% endfor %}
+                </table>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
 </div>
 {% endblock %}

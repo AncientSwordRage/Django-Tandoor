@@ -52,11 +52,31 @@ tr [colspan="2"] {
 }
 .navbar-menu li.nav-item a:hover,
 .navbar-menu li.nav-item a:focus,
-.navbar-menu li.nav-item a:active{
+.navbar-menu li.nav-item a.active{
 	background-color: hsl(50,85%,60%);
 	border-color: unset;
 }
 
+.nav-tabs{
+	border-bottom: 1px solid hsl(115,75%,25%);
+    margin: 0px -15px;
+}
+.nav-tabs li a{
+	font-weight: 600;
+	margin-right: -1px;
+}
+
+.nav-tabs   li.nav-item.active a, 
+.nav-tabs   li.nav-item a:hover,
+.nav-tabs   li.nav-item a:focus{
+	background-color: hsl(50,85%,60%);
+	border-color: unset;
+	border-radius: unset;
+}
+.category-type-header{
+	color: hsl(0,5%,75%);
+	margin-left:5px;
+}
 .main-text{
 	color: hsl(115,75%,25%);
 	font-weight: 700;
