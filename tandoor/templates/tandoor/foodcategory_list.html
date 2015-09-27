@@ -15,7 +15,7 @@
                     <span class="category-type-header">{{catTypeDesc}}</span>
                     {% for section in foodcategory_list|in_category:catTypeName %}
                     <li class = "sidebar-item {{catTypeName}}">
-                        <a href="#{{section.name}}">{{section.name}}</a>
+                        <a href="#{{ section.name|slugify }}">{{section.name}}</a>
                     </li>
                     {%endfor%}
                 </ul>
@@ -42,7 +42,7 @@
                 <table>
                     {% for category in foodcategory_list|in_category:catTypeName %}<!-- filter on cat type -->
                     <tbody>
-                        <tr name="{{category.name}}" class="category">
+                        <tr name="{{category.name|slugify}}" class="category">
                             <th colspan="2">{{category.name}}</th>
                         </tr>
                         <tr>
