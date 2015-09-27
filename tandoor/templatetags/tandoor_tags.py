@@ -3,6 +3,10 @@ from django.core.urlresolvers import reverse, NoReverseMatch
 from django.utils.safestring import mark_safe
 register = template.Library()
 
+@register.filter
+def in_category(things, category):
+    return things.filter(categoryType=category)
+
 @register.simple_tag
 def multiglyph(factor, icon_name):
     multi_glyph = '<i class="fa fa-{icon_name}"></i>'.format(icon_name=icon_name)

@@ -21,6 +21,13 @@
 		<p>Our menu is carefully designed with different gradded strengths such as mild, medium, hot and fairly hot.</p>
 		<p>Should you find any of our currys to be too hot or too mild please ask for the exact strength you require.</p>
 		<h4>All Main Curry Dishes served in Large Containers</h4>
+		<ul class="menu-nav nav nav-tabs">
+			{% for value,text in category_type_choices %}
+			<li role="{{value}}" {% ifequal value main %}class="active"{% endifequal %}>
+				<a href="#{{value}}" role="tab" data-toggle="tab">{{text}}</a>
+			</li>
+			{%endfor%}
+		</ul>
 		<table>
 			{% for category in foodcategory_list %}
 		    <tbody>
@@ -46,6 +53,6 @@
 		    </tbody>
 		    {% endfor %}
 		</table>
-		</div>
+	</div>
 </div>
 {% endblock %}

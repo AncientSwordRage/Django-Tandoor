@@ -3,6 +3,19 @@ from malmesbury_tandoori.custom_fields import CurrencyField
 from taggit.managers import TaggableManager
 
 
+SPICE_CHOICES = (
+            ('mild','Mild'),
+            ('medium','Medium'),
+            ('hot','Hot'),
+            ('very_hot','Fairly Hot'),
+            ('none',None)
+        )
+CATEGORY_TYPE_CHOICES = (
+            ('starter','Starters'),
+            ('special','Specials'),
+            ('main','Mains'),
+            ('sides','Sides and Extras')
+        )
 # Create your models here.
 class FoodItem(models.Model):
     class Meta:
@@ -27,19 +40,8 @@ class FoodCategory(models.Model):
 
     name = models.CharField(max_length=128)
     description = models.TextField(blank=True,default=None,null=True)
-    spice_description = models.CharField(max_length=64,choices=(
-            ('mild','Mild'),
-            ('medium','Medium'),
-            ('hot','Hot'),
-            ('very_hot','Fairly Hot'),
-            ('none',None)
-        ), default='none',null=True)
-    categoryType =  models.CharField(max_length=128, choices=(
-            ('starter','Starters'),
-            ('special','Specials'),
-            ('main','Mains'),
-            ('sides','Sides and Extras')
-        ))
+    spice_description = models.CharField(max_length=64,choices=SPICE_CHOICES, default='none',null=True)
+    categoryType =  models.CharField(max_length=128, choices=CATEGORY_TYPE_CHOICES)
     def __str__(self):
         return self.name
    
